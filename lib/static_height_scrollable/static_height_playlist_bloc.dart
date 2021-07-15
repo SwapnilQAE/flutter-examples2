@@ -129,7 +129,9 @@ class StaticHeightPlaylistBloc {
   }
 
   void _jumpTo(int index) {
-    scrollController.jumpTo(index * listItemHeight);
+    if(scrollController.hasClients){
+      scrollController.jumpTo(index * listItemHeight);
+    }
   }
 
   bool get _isEndOfList {
@@ -144,9 +146,10 @@ class StaticHeightPlaylistBloc {
   }
 
   void dispose() {
-    _currentItemStreamController.close();
-    _eventStreamController.close();
-    _playlistStreamController.close();
-    scrollController.dispose();
+    //TODO: Have to see why disposing this is causing issue
+    // _currentItemStreamController.close();
+    // _eventStreamController.close();
+    // _playlistStreamController.close();
+    // scrollController.dispose();
   }
 }
