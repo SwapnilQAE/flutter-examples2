@@ -19,13 +19,11 @@ void main() {
         title: 'Static Height widget',
       ),
     );
-    await tester.pumpAndSettle();
     expect(find.byType(StaticHeightListWidget), findsOneWidget);
     expect(find.byType(HomeMenu), findsNothing);
     print("Will Execute Test");
     await Future.delayed(Duration(seconds: 20));
     await tester.tap(find.byKey(Key("btn_next")));
-    await tester.pump();
     expect(find.byType(StaticHeightListWidget), findsOneWidget);
   });
 
